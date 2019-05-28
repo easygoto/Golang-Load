@@ -1,24 +1,36 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unsafe"
+)
 
 var f float32 = 3.4
 var i, i64, d, cx = 10, 64, 3.099128981278123123, 12 + 3i
 
+const (
+	XA = 5 << iota
+	XB
+	XC
+)
+
 func main() {
 	dataType()
-	//variable()
 }
 
 func dataType() {
-	var s, ptr = "qwe", uintptr(i)
-	fmt.Println(&i)
+	var s, ptr = "qwe", &i
+	const PI float64 = 3.14
+	const NAME string = "tree link"
+	const XD = iota
+	const XE = iota
+
 	i = 21
-	fmt.Println(&i)
-	fmt.Println(i64 + i)
-	fmt.Println(f)
-	fmt.Println(d * float64(f))
-	fmt.Println(cx * cx)
-	fmt.Println(s + "12")
-	fmt.Println(&ptr)
+	fmt.Println(i, &i)
+	fmt.Println(*ptr, ptr)
+	fmt.Println(i64+i, d*float64(f), cx*cx, s+"12")
+
+	fmt.Println(PI, len(NAME), unsafe.Sizeof(NAME))
+
+	fmt.Println(XA, XB, XC, XD, XE)
 }
