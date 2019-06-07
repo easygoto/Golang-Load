@@ -19,7 +19,20 @@ func main() {
 	//dataType()
 	//control()
 	//array()
-	pointArray()
+	//pointArray()
+	pointPoint(&i)
+}
+
+func pointPoint(a *int) {
+	var ptr *int
+	var pPtr **int
+
+	ptr = a
+	pPtr = &ptr
+
+	fmt.Printf("变量 a = %d, &a = %p\n", *a, a)
+	fmt.Printf("指针变量 *ptr = %d, ptr = %p\n", *ptr, ptr)
+	fmt.Printf("指向指针的指针变量 **pPtr = %d, *pPtr = %p, pPtr = %p\n", **pPtr, *pPtr, pPtr)
 }
 
 func pointArray() {
