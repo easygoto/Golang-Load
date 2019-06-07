@@ -28,7 +28,15 @@ func main() {
 	//array()
 	//pointArray()
 	//pointPoint(&i)
-	_struct()
+	//_struct()
+	slice()
+}
+
+func slice()  {
+	var x = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+	var y = "1234567890"
+	fmt.Println(x[:], x[:3], x[3:], x[4:7])
+	fmt.Println(y[:], y[:3], y[3:], y[4:7])
 }
 
 func _struct() {
