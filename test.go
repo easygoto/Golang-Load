@@ -13,12 +13,26 @@ const (
 	XB
 	XC
 )
+const MAX int = 3
 
 func main() {
 	//dataType()
 	//control()
 	//array()
+	pointArray()
+}
 
+func pointArray() {
+	var a = []int{10, 100, 200}
+	var i int
+	var ptr [MAX]*int
+	for i = 0; i < MAX; i++ {
+		ptr[i] = &a[i]
+	}
+
+	for i = 0; i < MAX; i++ {
+		fmt.Printf("a[%d] = %d\n", i, *ptr[i])
+	}
 }
 
 func array() {
