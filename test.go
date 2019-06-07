@@ -6,7 +6,7 @@ import (
 )
 
 var f float32 = 3.4
-var i, i64, d, cx = 10, 64, 3.099128981278123123, 12 + 3i
+var i, i64, d, cx = 10, 64, 3.099128981278123123, 12+3i
 
 const (
 	XA = 5 << iota
@@ -15,12 +15,29 @@ const (
 )
 const MAX int = 3
 
+type Books struct {
+	title   string
+	author  string
+	subject string
+	bookId  int
+}
+
 func main() {
 	//dataType()
 	//control()
 	//array()
 	//pointArray()
-	pointPoint(&i)
+	//pointPoint(&i)
+	_struct()
+}
+
+func _struct() {
+	var book1 = Books{"title", "author", "subject", 1}
+	fmt.Println(book1)
+	fmt.Printf("Book 2 title : %s\n", book1.title)
+	fmt.Printf("Book 2 author : %s\n", book1.author)
+	fmt.Printf("Book 2 subject : %s\n", book1.subject)
+	fmt.Printf("Book 2 bookId : %d\n", book1.bookId)
 }
 
 func pointPoint(a *int) {
