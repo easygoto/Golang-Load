@@ -29,10 +29,21 @@ func main() {
 	//pointArray()
 	//pointPoint(&i)
 	//_struct()
-	slice()
+	//slice()
+	xRange()
 }
 
-func slice()  {
+func xRange() {
+	kvs := map[int]string{1: "apple", 2: "banana"}
+	for k, v := range kvs {
+		fmt.Printf("%d -> %s\n", k, v)
+	}
+	for i, c := range "啥" {
+		fmt.Println(i, c)
+	}
+}
+
+func slice() {
 	var x = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
 	var y = "1234567890"
 	fmt.Println(x[:], x[:3], x[3:], x[4:7])
