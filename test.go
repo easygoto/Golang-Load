@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 	"unsafe"
 )
 
@@ -67,11 +68,21 @@ func main() {
 	//fmt.Println(fibonacci(15))
 	//_interface()
 
-	result, errorMsg := divide(100, 10)
-	if errorMsg == "" {
-		fmt.Println("100/10 = ", result)
-	} else {
-		fmt.Println("errorMsg is: ", errorMsg)
+	//result, errorMsg := divide(100, 10)
+	//if errorMsg == "" {
+	//	fmt.Println("100/10 = ", result)
+	//} else {
+	//	fmt.Println("errorMsg is: ", errorMsg)
+	//}
+
+	go say("--------------------", 5)
+	say("++++", 6)
+}
+
+func say(s string, total int) {
+	for i := 0; i < total; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(s)
 	}
 }
 
