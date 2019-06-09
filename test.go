@@ -75,8 +75,33 @@ func main() {
 	//	fmt.Println("errorMsg is: ", errorMsg)
 	//}
 
-	go say("--------------------", 5)
-	say("++++", 6)
+	//go say("--------------------", 5)
+	//say("++++", 6)
+
+	ch := make(chan int, 10)
+	ch <- 1
+	ch <- 31
+	ch <- 531
+	TA, TB, TC := <-ch, <-ch, <-ch
+	fmt.Println(TA, TB, TC)
+
+	//s := []int{7, 2, 8, -9, 4, 0}
+	//c := make(chan int)
+	//go sum(s[:len(s)/2], c)
+	//go sum(s[len(s)/2:], c)
+	//x, y := <-c, <-c
+	//fmt.Println(x, y, x+y)
+}
+
+//func(c chan int) { 读写均可的channel c }
+//func(c <- chan int) { 只读的Channel }
+//func(c chan <- int) { 只写的Channel }
+func sum(arr []int, c chan int) {
+	sum := 0
+	for _, v := range arr {
+		sum += v
+	}
+	c <- sum
 }
 
 func say(s string, total int) {
@@ -108,7 +133,6 @@ func _interface() {
 
 	phone = new(IPhone)
 	phone.call()
-
 }
 
 func fibonacci(n int) int {
