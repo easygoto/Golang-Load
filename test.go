@@ -29,15 +29,29 @@ type Phone interface {
 type NokiaPhone struct {
 }
 
-func (nokiaPhone NokiaPhone) call() {
-	fmt.Println("I am Nokia, I can call you!")
-}
-
 type IPhone struct {
 }
 
 func (iPhone IPhone) call() {
 	fmt.Println("I am iPhone, I can call you!")
+}
+
+func (de *DivideError) Error() string {
+	strFormat := `
+    Cannot proceed, the divideR is zero.
+    divideE: %d
+    divideR: 0
+`
+	return fmt.Sprintf(strFormat, de.divideE)
+}
+
+type DivideError struct {
+	divideE int
+	divideR int
+}
+
+func (nokiaPhone NokiaPhone) call() {
+	fmt.Println("I am Nokia, I can call you!")
 }
 
 func main() {
@@ -51,11 +65,31 @@ func main() {
 	//xRange()
 	//mapDemo()
 	//fmt.Println(fibonacci(15))
-	_interface()
+	//_interface()
+
+	result, errorMsg := divide(100, 10)
+	if errorMsg == "" {
+		fmt.Println("100/10 = ", result)
+	} else {
+		fmt.Println("errorMsg is: ", errorMsg)
+	}
+}
+
+func divide(varDivideE int, varDivideR int) (result int, errorMsg string) {
+	if varDivideR == 0 {
+		dData := DivideError{
+			divideE: varDivideE,
+			divideR: varDivideR,
+		}
+		errorMsg = dData.Error()
+		return
+	} else {
+		return varDivideE / varDivideR, ""
+	}
 
 }
 
-func _interface()  {
+func _interface() {
 	var phone Phone
 
 	phone = new(NokiaPhone)
