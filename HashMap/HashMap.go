@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package HashMap
 
 type HashMap struct {
 	key      string
@@ -19,7 +15,7 @@ func initTable() {
 	}
 }
 
-func getInstance() [16]*HashMap {
+func GetInstance() [16]*HashMap {
 	if table[0] == nil {
 		initTable()
 	}
@@ -50,14 +46,14 @@ func indexNode(hashCode int) int {
 	return hashCode >> 4
 }
 
-func put(k string, v string) string {
+func Put(k string, v string) string {
 	var hashCode = genHashCode(k)
 	var thisNode = HashMap{k, v, hashCode, nil}
 
 	var tableIndex = indexTable(hashCode)
 	var nodeIndex = indexNode(hashCode)
 
-	var headPtr = getInstance()
+	var headPtr = GetInstance()
 	var headNode = headPtr[tableIndex]
 
 	if (*headNode).key == "" {
@@ -86,11 +82,11 @@ func put(k string, v string) string {
 	return ""
 }
 
-func get(k string) string {
+func Get(k string) string {
 	var hashCode = genHashCode(k)
 	var tableIndex = indexTable(hashCode)
 
-	var headPtr = getInstance()
+	var headPtr = GetInstance()
 	var node = headPtr[tableIndex]
 
 	if (*node).key == k {
@@ -104,14 +100,4 @@ func get(k string) string {
 		node = (*node).next
 	}
 	return ""
-}
-
-func main() {
-	getInstance()
-	put("a", "a_put")
-	put("b", "b_put")
-	fmt.Println(get("a"))
-	fmt.Println(get("b"))
-	put("p", "p_put")
-	fmt.Println(get("p"))
 }
