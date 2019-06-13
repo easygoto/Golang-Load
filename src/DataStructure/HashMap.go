@@ -1,4 +1,4 @@
-package HashMap
+package DataStructure
 
 type HashMap struct {
     key      string
