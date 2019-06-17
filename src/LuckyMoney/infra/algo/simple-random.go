@@ -12,7 +12,7 @@ func SimpleRand(count, amount int64) int64 {
         return amount
     }
     max := amount - min*(count-1)
-    rand.Seed(time.Now().Unix())
+    rand.Seed(time.Now().Unix() + int64(count))
     x := rand.Int63n(max) + min
     return x
 }
