@@ -11,8 +11,8 @@ func SimpleRand(count, amount int64) int64 {
     if count == 1 {
         return amount
     }
-    max := amount - min*(count-1)
-    rand.Seed(time.Now().Unix() + int64(count))
+    max := amount - min*count
+    rand.Seed(time.Now().Unix() + count)
     x := rand.Int63n(max) + min
     return x
 }
