@@ -1,7 +1,7 @@
 package main
 
 import (
-    "../../src/LuckyMoney/infra/algo"
+    "LuckyMoney/infra/algo"
     "fmt"
 )
 

@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
-import "../../src/LuckyMoney/infra/algo"
+import (
+    "LuckyMoney/infra/algo"
+    "fmt"
+)
 
 func main() {
     amount := int64(1000)

@@ -9,7 +9,7 @@ func main() {
     count, amount := int64(10), int64(10)
     temp := amount * 100
     for i := int64(0); i < count; i++ {
-        x := algo.BeforeShuffle(count-i, temp)
+        x := algo.DoubleAverage(count-i, temp)
         temp -= x
         fmt.Print(x, ",")
     }
