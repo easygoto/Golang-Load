@@ -93,6 +93,12 @@ func main() {
 ## 并发
 
 > 并发很简单, 只需要在函数之前加入关键字 `go` 即可
+>
+>> `func(c chan int) { // 读写均可的 channel }`
+>>
+>> `func(c <-chan int) { // 只读的 channel }`
+>>
+>> `func(c chan<- int) { // 只写的 channel }`
 
 ```go
 package main
