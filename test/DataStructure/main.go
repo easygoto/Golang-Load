@@ -1,18 +1,21 @@
 package main
 
-import "fmt"
-import "../../src/DataStructure"
+import (
+	"fmt"
+
+	"DataStructure"
+)
 
 func main() {
-    testHashMap()
+	testHashMap()
 }
 
 func testHashMap() {
-    DataStructure.GetInstance()
-    DataStructure.Put("a", "a_put")
-    DataStructure.Put("b", "b_put")
-    fmt.Println(DataStructure.Get("a"))
-    fmt.Println(DataStructure.Get("b"))
-    DataStructure.Put("p", "p_put")
-    fmt.Println(DataStructure.Get("p"))
+	DataStructure.GetInstance()
+	DataStructure.Put("a", "a_put")
+	DataStructure.Put("b", "b_put")
+	fmt.Println(DataStructure.Get("a"))
+	fmt.Println(DataStructure.Get("b"))
+	DataStructure.Put("p", "p_put")
+	fmt.Println(DataStructure.Get("p"))
 }

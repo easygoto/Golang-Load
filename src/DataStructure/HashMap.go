@@ -1,103 +1,103 @@
 package DataStructure
 
 type HashMap struct {
-    key      string
-    value    string
-    hashCode int
-    next     *HashMap
+	key      string
+	value    string
+	hashCode int
+	next     *HashMap
 }
 
 var table [16]*HashMap
 
 func initTable() {
-    for i := range table {
-        table[i] = &HashMap{"", "", i, nil}
-    }
+	for i := range table {
+		table[i] = &HashMap{"", "", i, nil}
+	}
 }
 
 func GetInstance() [16]*HashMap {
-    if table[0] == nil {
-        initTable()
-    }
-    return table
+	if table[0] == nil {
+		initTable()
+	}
+	return table
 }
 
 func genHashCode(k string) int {
-    if len(k) == 0 {
-        return 0
-    }
-    var hashCode = 0
-    var lastIndex = len(k) - 1
-    for i := range k {
-        if i == lastIndex {
-            hashCode += int(k[i])
-            break
-        }
-        hashCode += (hashCode + int(k[i])) * 31
-    }
-    return hashCode
+	if len(k) == 0 {
+		return 0
+	}
+	var hashCode = 0
+	var lastIndex = len(k) - 1
+	for i := range k {
+		if i == lastIndex {
+			hashCode += int(k[i])
+			break
+		}
+		hashCode += (hashCode + int(k[i])) * 31
+	}
+	return hashCode
 }
 
 func indexTable(hashCode int) int {
-    return hashCode % 16
+	return hashCode % 16
 }
 
 func indexNode(hashCode int) int {
-    return hashCode >> 4
+	return hashCode >> 4
 }
 
 func Put(k string, v string) string {
-    var hashCode = genHashCode(k)
-    var thisNode = HashMap{k, v, hashCode, nil}
+	var hashCode = genHashCode(k)
+	var thisNode = HashMap{k, v, hashCode, nil}
 
-    var tableIndex = indexTable(hashCode)
-    var nodeIndex = indexNode(hashCode)
+	var tableIndex = indexTable(hashCode)
+	var nodeIndex = indexNode(hashCode)
 
-    var headPtr = GetInstance()
-    var headNode = headPtr[tableIndex]
+	var headPtr = GetInstance()
+	var headNode = headPtr[tableIndex]
 
-    if (*headNode).key == "" {
-        *headNode = thisNode
-        return ""
-    }
+	if (*headNode).key == "" {
+		*headNode = thisNode
+		return ""
+	}
 
-    var lastNode = headNode
-    var nextNode = (*headNode).next
+	var lastNode = headNode
+	var nextNode = (*headNode).next
 
-    for nextNode != nil && (indexNode((*nextNode).hashCode) < nodeIndex) {
-        lastNode = nextNode
-        nextNode = (*nextNode).next
-    }
-    if (*lastNode).hashCode == thisNode.hashCode {
-        var oldValue = lastNode.value
-        lastNode.value = thisNode.value
-        return oldValue
-    }
-    if lastNode.hashCode < thisNode.hashCode {
-        lastNode.next = &thisNode
-    }
-    if nextNode != nil {
-        thisNode.next = nextNode
-    }
-    return ""
+	for nextNode != nil && (indexNode((*nextNode).hashCode) < nodeIndex) {
+		lastNode = nextNode
+		nextNode = (*nextNode).next
+	}
+	if (*lastNode).hashCode == thisNode.hashCode {
+		var oldValue = lastNode.value
+		lastNode.value = thisNode.value
+		return oldValue
+	}
+	if lastNode.hashCode < thisNode.hashCode {
+		lastNode.next = &thisNode
+	}
+	if nextNode != nil {
+		thisNode.next = nextNode
+	}
+	return ""
 }
 
 func Get(k string) string {
-    var hashCode = genHashCode(k)
-    var tableIndex = indexTable(hashCode)
+	var hashCode = genHashCode(k)
+	var tableIndex = indexTable(hashCode)
 
-    var headPtr = GetInstance()
-    var node = headPtr[tableIndex]
+	var headPtr = GetInstance()
+	var node = headPtr[tableIndex]
 
-    if (*node).key == k {
-        return (*node).value
-    }
+	if (*node).key == k {
+		return (*node).value
+	}
 
-    for (*node).next != nil {
-        if k == (*node).key {
-            return (*node).value
-        }
-        node = (*node).next
-    }
-    return ""
+	for (*node).next != nil {
+		if k == (*node).key {
+			return (*node).value
+		}
+		node = (*node).next
+	}
+	return ""
 }
