@@ -1,4 +1,4 @@
-package lucky
+package LuckyMoney
 
 import "math/rand"
 

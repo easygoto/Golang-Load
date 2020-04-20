@@ -1,4 +1,4 @@
-package Pipeline
+package MergeSort
 
 import (
 	"encoding/binary"
@@ -24,6 +24,17 @@ func ArraySource(a ...int) <-chan int {
 		close(ch)
 	}()
 	return ch
+}
+
+func RandomSource(count int) <-chan int {
+	out := make(chan int)
+	go func() {
+		for i := 0; i < count; i++ {
+			out <- rand.Int()
+		}
+		close(out)
+	}()
+	return out
 }
 
 func ReaderSource(reader io.Reader, chunkSize int) <-chan int {
@@ -53,17 +64,6 @@ func WriterSink(writer io.Writer, in <-chan int) {
 		binary.BigEndian.PutUint64(buf, uint64(v))
 		_, _ = writer.Write(buf)
 	}
-}
-
-func RandomSource(count int) <-chan int {
-	out := make(chan int)
-	go func() {
-		for i := 0; i < count; i++ {
-			out <- rand.Int()
-		}
-		close(out)
-	}()
-	return out
 }
 
 func InMemorySort(in <-chan int) <-chan int {

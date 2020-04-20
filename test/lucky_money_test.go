@@ -2,29 +2,30 @@ package test
 
 import (
 	"fmt"
-	"lucky"
 	"testing"
+
+	. "LuckyMoney"
 )
 
 func TestSimpleRand(t *testing.T) {
-	ForTest("简单随机算法", t, lucky.SimpleRand)
+	ForTest("简单随机算法", t, SimpleRand)
 }
 
 func TestBeforeShuffle(t *testing.T) {
-	ForTest("先洗牌算法", t, lucky.BeforeShuffle)
+	ForTest("先洗牌算法", t, BeforeShuffle)
 }
 
 // 后洗牌算法
 func TestAfterShuffle(t *testing.T) {
-	_, _ = fmt.Println(lucky.AfterShuffle(int64(10), int64(10000)))
+	_, _ = fmt.Println(AfterShuffle(int64(10), int64(10000)))
 }
 
 func TestDoubleRandom(t *testing.T) {
-	ForTest("二次随机算法", t, lucky.DoubleRandom)
+	ForTest("二次随机算法", t, DoubleRandom)
 }
 
 func TestDoubleAverage(t *testing.T) {
-	ForTest("二倍随机算法", t, lucky.DoubleAverage)
+	ForTest("二倍随机算法", t, DoubleAverage)
 }
 
 func ForTest(message string, t *testing.T, fn func(count, amount int64) int64) {
