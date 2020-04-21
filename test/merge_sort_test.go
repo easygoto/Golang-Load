@@ -12,15 +12,16 @@ import (
 
 // 排序演示
 func TestArraySource(t *testing.T) {
+	Init()
+
 	result := Merge(
 		InMemorySort(
 			ArraySource(2234, 8536, 23, 8746, 3486, 412, 3423, 4536)),
 		InMemorySort(
 			ArraySource(2345, 456, 483, 929, 0404, 367, 987, 8796)))
 	for v := range result {
-		_, _ = fmt.Printf("%d ", v)
+		_, _ = fmt.Println(v)
 	}
-	_, _ = fmt.Println()
 }
 
 // 写随机数据到文件
@@ -89,7 +90,7 @@ func TestCreateNetworkPipeline(t *testing.T) {
 			panic(err)
 		}
 
-		file.Seek(int64(i*chunkSize), 0)
+		_, _ = file.Seek(int64(i*chunkSize), 0)
 
 		source := ReaderSource(bufio.NewReader(file), chunkSize)
 
