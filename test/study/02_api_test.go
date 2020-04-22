@@ -39,7 +39,7 @@ func TestPoint(t *testing.T) {
 	// 数组的指针
 	var arr = [...]int{1, 2, 3}
 	pArr := &arr
-	_, _ = fmt.Println(pArr, (*pArr)[0], (*pArr)[1], (*pArr)[2])
+	_, _ = fmt.Println(pArr, (*pArr)[0], pArr[1], pArr[2])
 
 	// 指针的数组
 	a, b, c := 1, 2, 3

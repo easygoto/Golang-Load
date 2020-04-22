@@ -2,21 +2,38 @@ package study
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 
-	. "demo/box"
-	. "demo/case"
+	. "demo/oo"
 )
 
-func TestOO(t *testing.T) {
-	_, _ = fmt.Println(new(Apple).Test())
-	_, _ = fmt.Println(new(Bee).Test())
-	_, _ = fmt.Println(new(Book).Test())
-	_, _ = fmt.Println(new(Book).Demo())
-	_, _ = fmt.Println(new(Car).Test())
-	_, _ = fmt.Println(new(Cat).Test())
+func showGraph(graph Graph) {
+	_, _ = fmt.Printf("type: %v, graph area: %f\n", reflect.TypeOf(graph).Elem(), graph.Area())
+}
 
-	_, _ = fmt.Println(Bee{Id: 123123}.SetIndex(10).GetIndex())
-	_, _ = fmt.Println(new(Bee).GetIndex())
-	_, _ = fmt.Println(new(Car).GetIndex())
+func showEdge(edge Edge) {
+	_, _ = fmt.Printf("type: %v, edge number: %d\n", reflect.TypeOf(edge).Elem(), edge.GetEdge())
+}
+
+func TestOO(t *testing.T) {
+	rect1 := NewRect(1.2, 3.4)
+	rect2 := &Rect{Width: 3.6, Height: 5.8}
+	square1 := NewSquare(5.9)
+	square2 := &Square{Width: 9.4}
+	circle1 := NewCircle(6.8)
+	circle2 := &Circle{Radius: 7.7}
+
+	showEdge(rect1)
+	showEdge(rect2)
+	showEdge(square1)
+	showEdge(square2)
+	_, _ = fmt.Println()
+
+	showGraph(rect1)
+	showGraph(rect2)
+	showGraph(square1)
+	showGraph(square2)
+	showGraph(circle1)
+	showGraph(circle2)
 }
