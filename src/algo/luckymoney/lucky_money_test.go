@@ -1,10 +1,8 @@
-package test
+package luckymoney
 
 import (
 	"fmt"
 	"testing"
-
-	. "LuckyMoney"
 )
 
 func TestSimpleRand(t *testing.T) {

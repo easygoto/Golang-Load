@@ -1,4 +1,4 @@
-package test
+package mergesort
 
 import (
 	"bufio"
@@ -6,8 +6,6 @@ import (
 	"os"
 	"strconv"
 	"testing"
-
-	. "MergeSort"
 )
 
 // 排序演示
