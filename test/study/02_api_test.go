@@ -21,12 +21,14 @@ func TestJson(t *testing.T) {
 
 	w1 := Worker{}
 	w2 := new(Worker)
+	w3 := new(interface{})
 	err1 := json.Unmarshal(jsonStr, &w1)
 	err2 := json.Unmarshal(jsonStr, w2)
-	if err1 != nil || err2 != nil {
+	err3 := json.Unmarshal(jsonStr, w3)
+	if err1 != nil || err2 != nil || err3 != nil {
 		panic(err)
 	}
-	_, _ = fmt.Println(w1, w2)
+	_, _ = fmt.Println(w1, w2, *w3)
 }
 
 // 指针
@@ -52,10 +54,10 @@ func TestBasicFn(t *testing.T) {
 	list := make([]string, 2)
 	list[0] = "root"
 	list[1] = "admin"
-	_, _ = fmt.Printf("len=%d,cap=%d,value=%v,addr=%p\n", len(list), cap(list), list, &list)
+	_, _ = fmt.Printf("len=%d,cap=%d,value=%v,addr=%p,saddr=%p\n", len(list), cap(list), list, &list, list[:])
 
 	list = append(list, "user", "test")
-	_, _ = fmt.Printf("len=%d,cap=%d,value=%v,addr=%p\n", len(list), cap(list), list, &list)
+	_, _ = fmt.Printf("len=%d,cap=%d,value=%v,addr=%p,saddr=%p\n", len(list), cap(list), list, &list, list[:])
 
 	listCp := make([]string, 2)
 	copy(listCp, list)

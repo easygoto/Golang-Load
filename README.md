@@ -24,7 +24,7 @@
 - func
     - 不定参数 myfunc(args ...int), 外部调用传输 slice 可以用 `myfunc(slice[:]...)`
     - 不支持重载函数
-- select
+- switch
     - 不需要 break 退出 case, 明确添加 fallthrough, 才会继续执行下一个 case
     - case 可以有多个值, 用 "," 隔开
 - Printf
@@ -92,9 +92,11 @@
 
 [点击查看测试代码](test/study/04_oo_test.go)
 
-- [源文件 a.go](src/demo/case/a.go)
-- [源文件 b.go](src/demo/case/b.go)
-- [源文件 c.go](src/demo/box/c.go)
+- [源文件 edge.go](src/demo/oo/edge.go)
+- [源文件 graph.go](src/demo/oo/graph.go)
+- [源文件 circle.go](src/demo/oo/circle.go)
+- [源文件 rect.go](src/demo/oo/rect.go)
+- [源文件 square.go](src/demo/oo/square.go)
 
 ## 1.4 并发
 
@@ -104,7 +106,7 @@
     - `func(c <-chan int) { }` 只读的 chan
     - `func(c chan<- int) { }` 只写的 chan
     - 作为一个好的习惯, 写完 chan 需要 close
-- select: 阻塞式从 chan 读取数据, 自上向下依次读取
+- select: 阻塞式从 chan 读取数据, 随机读取
 - WaitGroup: 协程同步
     - Add(delta): 添加协程记录, delta 表示需要几次 `Done` 才能解除
     - Done(): 移除一个协程记录
@@ -122,11 +124,22 @@
 
 ## 2.1 并发思想归并排序
 
+1. `node.go` 属于单机排序
+    - *Source 系列方法的作用是将数据放进通道
+1. `node_net.go` 属于 TCP 网络多机排序
+
 > [点击查看源码](src/algo/mergesort)
+>
+> [点击查看测试代码](src/algo/mergesort/merge_sort_test.go)
 
-## 2.2 抢红包算法
+## 2.2 音乐播放器
 
-> [点击查看源码](src/algo/luckymoney)
+1. 按照面向对象的思想的音乐播放器
+1. manager 是音乐容器, 可以增删查音乐
+1. play 是播放器, 可以播放它支持的音乐
+1. main 是主程序面板
+
+> [点击查看源码](src/demo/mplayer)
 
 ## 2.3 哈希表数据结构
 
