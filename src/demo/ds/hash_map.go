@@ -1,4 +1,4 @@
-package hashmap
+package ds
 
 const TableSize = 16
 
