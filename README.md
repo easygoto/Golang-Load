@@ -31,7 +31,7 @@
     - `%p` : 指针值
     - `%T` : 类型
     - `%t` : 布尔值
-    - `%v / %+v / %#v` : (原始 / json / id 和 json) 形式内容
+    - `%v / %+v / %#v` : (原始 / 键值 / id 和键值) 形式内容
     - `%b / %o / %d / %x / %X` : (二 / 八 / 十进制 / 十六 / 大写的十六) 进制整型
     - `%f / %g / %e / %E` : (普通 / 精确 / 科学计数法 / 科学计数法) 浮点数, 复数
     - `%c / %s / %U / %q` : (字符 / 普通 / unicode / 带有引号) 字符串
@@ -128,9 +128,9 @@
     - *Source 系列方法的作用是将数据放进通道
 1. `node_net.go` 属于 TCP 网络多机排序
 
-> [点击查看源码](src/algo/mergesort)
+> [点击查看源码](src/demo/mergesort)
 >
-> [点击查看测试代码](src/algo/mergesort/merge_sort_test.go)
+> [点击查看测试代码](src/demo/mergesort/merge_sort_test.go)
 
 ## 2.2 音乐播放器
 
@@ -143,7 +143,11 @@
 
 ## 2.3 哈希表数据结构
 
-> [点击查看源码](src/ds/hashmap)
+1. 面向对象的思想的哈希表
+1. 长度为 16 的数组链表
+1. 实现 Put, Get 方法
+
+> [点击查看源码](src/demo/hashmap)
 
 ## 2.4 IPC 发送消息
 
