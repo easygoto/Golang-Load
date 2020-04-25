@@ -4,14 +4,16 @@
     - [1.1 基本语法](README.md#11-基本语法)
         - [1.1.1 注意事项](README.md#111-注意事项)
         - [1.1.2 数据类型](README.md#112-数据类型)
+        - [1.1.3 Module](README.md#113-module)
     - [1.2 基础方法](README.md#12-基础方法)
     - [1.3 面向对象](README.md#13-面向对象)
     - [1.4 并发](README.md#14-并发)
     - [1.5 网络编程](README.md#15-网络编程)
+    - [1.6 安全系列](README.md#16-安全系列)
 - [2 案例](README.md#2-案例)
     - [2.1 并发思想归并排序](README.md#21-并发思想归并排序)
-    - [2.2 抢红包算法](README.md#22-抢红包算法)
-    - [2.3 哈希表数据结构](README.md#23-哈希表数据结构)
+    - [2.2 音乐播放器](README.md#22-音乐播放器)
+    - [2.3 数据结构](README.md#23-数据结构)
     - [2.4 IPC 发送消息的实现](README.md#24-IPC-发送消息)
 
 # 1 学习笔记
@@ -115,6 +117,18 @@
 [点击查看测试代码](test/study/03_goroutine_test.go)
 
 ## 1.5 网络编程
+
+- TCP/UDP
+    - net.Listen 可开启监听
+    - Dial 发送命令
+- http 客户端, 请求方法都是类似
+    - Get, Post, PostForm, Head 方法处理都是类似
+    - http.Client.Do 可以实现不常见的, DELETE, PATCH, OPTIONS 等
+- rpc, 实质属于 tcp/udp 等连接
+
+> 存在问题
+
+- [ ] 使用 `TestHttpClient` 时总是报 400 错误
 
 [点击查看测试代码](test/study/05_net_test.go)
 
