@@ -10,6 +10,7 @@
     - [1.4 并发](README.md#14-并发)
     - [1.5 网络编程](README.md#15-网络编程)
     - [1.6 安全系列](README.md#16-安全系列)
+    - [1.7 cgo 程序](README.md#17-cgo-程序)
 - [2 案例](README.md#2-案例)
     - [2.1 并发思想归并排序](README.md#21-并发思想归并排序)
     - [2.2 音乐播放器](README.md#22-音乐播放器)
@@ -143,6 +144,14 @@
 - 基于 ssl/tls 的 echoServer
 
 [点击查看测试代码](test/study/06_ssl_test.go)
+
+## 1.7 cgo 程序
+
+- cgo 不支持单元测试, import C 之前不能有空行, 不能同时拥有两个 main 函数
+
+> 用 C 语言写了一个简单的链表, 用 Go 语言毫无压力的调用
+
+[点击查看代码](src/demo/cgo)
 
 # 2 案例
 

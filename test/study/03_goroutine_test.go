@@ -48,6 +48,31 @@ func TestGoroutine(t *testing.T) {
 	time.Sleep(time.Millisecond)
 }
 
+// 并发计算范围内的所有质数
+func TestPrimes(t *testing.T) {
+	goal := 100
+	_, _ = fmt.Println("goal=", goal)
+	ch := make(chan int)
+	defer close(ch)
+	go primeTask(ch)
+	for i := 2; i <= goal; i++ {
+		ch <- i
+	}
+}
+
+func primeTask(ch chan int) {
+	p := <-ch
+	_, _ = fmt.Println(p)
+	tmpCh := make(chan int)
+	go primeTask(tmpCh)
+	for {
+		i := <-ch
+		if i%p != 0 {
+			tmpCh <- i
+		}
+	}
+}
+
 func send(ch1, ch2, ch3 chan<- string) {
 	for i := 0; i < 10; i++ {
 		ch1 <- fmt.Sprintf("channel 1 : %d", i)

@@ -49,7 +49,6 @@ func TestHttpServer(t *testing.T) {
 
 // 测试 http get 方法
 func TestHttpClient(t *testing.T) {
-	http.Client.Do()
 	response, _ := http.Get("https://www.example.com/")
 	defer response.Body.Close()
 	_, _ = io.Copy(os.Stdout, response.Body)

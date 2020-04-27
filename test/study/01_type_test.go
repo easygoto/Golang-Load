@@ -2,6 +2,7 @@ package study
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 )
 
@@ -25,6 +26,11 @@ type User struct {
 
 func (user User) getId() int {
 	return user.id
+}
+
+type ReflectDemo struct {
+	Id   int
+	Name string
 }
 
 func TestConst(t *testing.T) {
@@ -86,4 +92,22 @@ func TestType(t *testing.T) {
 	_, _ = fmt.Printf("%-24T: %+v, id: %d\n", mod, mod, mod.getId())
 	_, _ = fmt.Printf("%-24T: %#v\n", ch, ch)
 	_, _ = fmt.Printf("%-24T: %#v, %s\n", fn, &fn, fn("hello"))
+}
+
+// 反射
+func TestReflect(t *testing.T) {
+	rd := ReflectDemo{
+		Id:   123,
+		Name: "admin",
+	}
+	_, _ = fmt.Println(reflect.TypeOf(rd))
+
+	rdv := reflect.ValueOf(rd)
+	_, _ = fmt.Println("type:", rdv.Type())
+
+	rdType := rdv.Type()
+	for i := 0; i < rdv.NumField(); i++ {
+		field := rdv.Field(i)
+		_, _ = fmt.Printf("%d: %s %s = %v\n", i, rdType.Field(i).Name, field.Type(), field.Interface())
+	}
 }
